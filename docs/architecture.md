@@ -2,6 +2,7 @@
 
 
 ## Repo structure
+'''
 Masters-Project/
 ├── README.md
 ├── LICENSE
@@ -40,3 +41,4 @@ Masters-Project/
     │       └── .gitkeep
     └── test/              // Tests for cloud platform components
         └── .gitkeep
+'''
