@@ -40,7 +40,6 @@
 // }
 
 // Working code with freertos and mcpwm
-#include <Arduino.h>
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -48,7 +47,7 @@
 #include "esp_system.h"
 #include "servo_motor_controller.h"
 
-servo servo_motor_1 = {
+Servo servo_motor_1 = {
     .gpio_pin = SERVO_1_GPIO,
     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
@@ -61,7 +60,7 @@ servo servo_motor_1 = {
 };
 
 // Application main entry point
-void setup(void) {
+void app_main(void) {
     ESP_LOGI(TAG, "ESP32 Servo Controller Starting");
 
     servo_init(&servo_motor_1, 0); // Initialize servo motor to 0 degrees
@@ -96,4 +95,4 @@ void setup(void) {
     ESP_LOGI(TAG, "All tasks created");
 }
 
-void loop(){}
+// void loop(){}

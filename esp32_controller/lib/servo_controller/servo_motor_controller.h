@@ -16,9 +16,9 @@
 #include "freertos/queue.h"
 #include "driver/mcpwm.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+// #ifdef __cplusplus
+// extern "C" {
+// #endif
 
 /**
  * @brief Hardware and servo motor configuration parameters
@@ -44,7 +44,7 @@ extern const char *TAG;
  * 
  * Contains configuration and state for a single servo motor
  */
-typedef struct {
+struct Servo {
     uint8_t gpio_pin;               /**< GPIO pin number the servo is connected to */
     uint16_t min_pulse_width_us;    /**< Minimum pulse width in microseconds (0 degrees) */
     uint16_t max_pulse_width_us;    /**< Maximum pulse width in microseconds (max degrees) */
@@ -54,7 +54,7 @@ typedef struct {
     mcpwm_timer_t mcpwm_timer;      /**< MCPWM timer to use (MCPWM_TIMER_0, MCPWM_TIMER_1, MCPWM_TIMER_2) */
     mcpwm_io_signals_t mcpwm_io;    /**< MCPWM signal (MCPWM0A, MCPWM0B, etc.) */
     mcpwm_operator_t mcpwm_op;      /**< MCPWM operator (MCPWM_OPR_A, MCPWM_OPR_B) */
-} servo;
+};
 
 /**
  * @brief Queue for sending commands to the servo control task
@@ -72,7 +72,7 @@ extern QueueHandle_t servo_cmd_queue;
 typedef struct {
     uint32_t angle;    /**< Target angle in degrees (0-180) */
     uint32_t delay_ms; /**< Delay after reaching position, in milliseconds */
-    servo* servo;    /**< Pointer to the servo to control */
+    Servo* servo;    /**< Pointer to the servo to control */
 } servo_cmd;
 
 /**
@@ -84,7 +84,7 @@ typedef struct {
  * @param initial_angle Initial angle to set the servo to (0-180 degrees)
  * @return esp_err_t ESP_OK on success, or an error code on failure
  */
-esp_err_t servo_init(servo* servo, uint32_t initial_angle);
+esp_err_t servo_init(Servo* servo, uint32_t initial_angle);
 
 /**
  * @brief Set the angle of a servo motor
@@ -94,7 +94,7 @@ esp_err_t servo_init(servo* servo, uint32_t initial_angle);
  * @param servo Pointer to the servo to control
  * @param angle Target angle in degrees (0-180)
  */
-void servo_set_angle(servo* servo, uint32_t angle);
+void servo_set_angle(Servo* servo, uint32_t angle);
 
 /**
  * @brief Servo control task that processes commands from the queue
@@ -109,8 +109,8 @@ void servo_control_task(void *arg);
 //For basic testing
 void sweep_task(void *arg);
 
-#ifdef __cplusplus
-}
-#endif
+// #ifdef __cplusplus
+// }
+// #endif
 
 #endif /* SERVO_MOTOR_CONTROLLER_H */

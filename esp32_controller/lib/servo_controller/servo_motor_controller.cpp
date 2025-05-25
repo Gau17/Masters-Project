@@ -10,12 +10,12 @@ const char *TAG = "servo_controller";
 QueueHandle_t servo_cmd_queue = NULL;
 
 // Helper function to convert angle to pulse width
-uint32_t servo_per_degree_init(servo* servo, uint32_t degree) {
+uint32_t servo_per_degree_init(Servo* servo, uint32_t degree) {
     return (((servo->max_pulse_width_us - servo->min_pulse_width_us) * degree) / 
             servo->max_degree + servo->min_pulse_width_us);
 }
 
-esp_err_t servo_init(servo* servo, uint32_t initial_angle) {
+esp_err_t servo_init(Servo* servo, uint32_t initial_angle) {
     ESP_LOGI(TAG, "Initializing servo motor on GPIO %d to %d degrees", servo->gpio_pin, initial_angle);
     
     servo->current_angle = initial_angle;
@@ -39,7 +39,7 @@ esp_err_t servo_init(servo* servo, uint32_t initial_angle) {
     return ESP_OK; 
 }
 
-void servo_set_angle(servo* servo, uint32_t angle) { 
+void servo_set_angle(Servo* servo, uint32_t angle) { 
     if (angle > servo->max_degree) { 
         angle = servo->max_degree;
     }
@@ -67,7 +67,7 @@ void servo_control_task(void *arg) {
 
 // Sweep generation task for testing
 void sweep_task(void *arg) {
-    servo* servo_to_sweep = (servo*)arg;
+    Servo* servo_to_sweep = (Servo*)arg;
     if (servo_to_sweep == NULL) {
         ESP_LOGE(TAG, "Sweep task received NULL servo pointer");
         vTaskDelete(NULL);
