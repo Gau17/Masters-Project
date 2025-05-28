@@ -10,7 +10,7 @@ const char *TAG = "servo_controller";
 QueueHandle_t servo_cmd_queue = NULL;
 
 // Helper function to convert angle to pulse width
-uint32_t servo_per_degree_init(Servo* servo, uint32_t degree) {
+static uint32_t servo_per_degree_init(Servo* servo, uint32_t degree) {
     return (((servo->max_pulse_width_us - servo->min_pulse_width_us) * degree) / 
             servo->max_degree + servo->min_pulse_width_us);
 }
@@ -53,7 +53,7 @@ void servo_set_angle(Servo* servo, uint32_t angle) {
 
 // Servo control task for testing
 void servo_control_task(void *arg) {
-    servo_cmd cmd;
+    Servo_cmd cmd;
     
     ESP_LOGI(TAG, "Servo control task started");
     
@@ -74,7 +74,7 @@ void sweep_task(void *arg) {
         return;
     }
 
-    servo_cmd cmd;
+    Servo_cmd cmd;
     bool direction = true;
     uint32_t current_angle = 0;
     

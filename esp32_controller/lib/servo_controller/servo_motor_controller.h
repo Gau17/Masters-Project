@@ -69,11 +69,11 @@ extern QueueHandle_t servo_cmd_queue;
  * 
  * Contains parameters needed to position the servo motor.
  */
-typedef struct {
+struct Servo_cmd{
     uint32_t angle;    /**< Target angle in degrees (0-180) */
     uint32_t delay_ms; /**< Delay after reaching position, in milliseconds */
     Servo* servo;    /**< Pointer to the servo to control */
-} servo_cmd;
+};
 
 /**
  * @brief Initialize a servo motor

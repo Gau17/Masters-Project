@@ -60,13 +60,13 @@ Servo servo_motor_1 = {
 };
 
 // Application main entry point
-void app_main(void) {
+void setup(void) {
     ESP_LOGI(TAG, "ESP32 Servo Controller Starting");
 
     servo_init(&servo_motor_1, 0); // Initialize servo motor to 0 degrees
     
     // Create command queue for servo
-    servo_cmd_queue = xQueueCreate(10, sizeof(servo_cmd));
+    servo_cmd_queue = xQueueCreate(10, sizeof(Servo_cmd));
     if (servo_cmd_queue == NULL) {
         ESP_LOGE(TAG, "Failed to create servo command queue");
         return;
@@ -95,4 +95,4 @@ void app_main(void) {
     ESP_LOGI(TAG, "All tasks created");
 }
 
-// void loop(){}
+void loop(){}
