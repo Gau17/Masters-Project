@@ -1,44 +1,3 @@
-// Initial attempt with ESP32Servo arduino library
-
-// #include <stdio.h>
-// #include "ESP32Servo.h"
-// // #include "freertos/FreeRTOS.h"
-// // #include "freertos/task.h"
-
-// #define SERVO_PIN 18
-
-// Servo myservo;
-
-// void setup(void)
-// {
-//     Serial.begin(115200);
-
-//     Serial.println("Hello from ESP32!");
-
-//     myservo.attach(SERVO_PIN);
-
-//     myservo.write(0);
-
-//     Serial.println("Servo initialized at position 0°");
-// }
-
-// void loop(void)
-// {
-//     // Move servo from 0 to 180 degrees
-//     for (int pos = 0; pos <= 180; pos += 10) {
-//         myservo.write(pos);
-//         Serial.printf("Servo position: %d degrees\n", pos);
-//         vTaskDelay(50 / portTICK_PERIOD_MS);
-//     }
-    
-//     // Move servo from 180 to 0 degrees
-//     for (int pos = 180; pos >= 0; pos -= 10) {
-//         myservo.write(pos);
-//         Serial.printf("Servo position: %d degrees\n", pos);
-//         vTaskDelay(50 / portTICK_PERIOD_MS);
-//     }
-// }
-
 // Working code with freertos and mcpwm
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
@@ -46,6 +5,7 @@
 #include "esp_log.h"
 #include "esp_system.h"
 #include "servo_motor_controller.h"
+#include "wifi_comms.h"
 
 Servo servo_motor_1 = {
     .gpio_pin = SERVO_1_GPIO,
@@ -59,11 +19,44 @@ Servo servo_motor_1 = {
     .mcpwm_op = MCPWM_OPR_A
 };
 
+void send_dummy_data_task(void *pvParameters) {
+        CommPacket_t dummy_packet;
+        dummy_packet.numServos = 1; 
+        ESP_LOGI(TAG, "send_dummy_data_task started");
+
+        for (;;) {
+            dummy_packet.timestamp = esp_log_timestamp(); 
+            
+            // Critical section: Accessing shared servo_motor_1.current_angle
+            // This should ideally be thread-safe if current_angle is modified by another task.
+            dummy_packet.servos[0].id = servo_motor_1.gpio_pin; 
+            dummy_packet.servos[0].angle = servo_motor_1.current_angle; 
+
+            ESP_LOGI(TAG, "[DummyTask] Q Pre: Servo ID %d, Angle %d", 
+                        dummy_packet.servos[0].id, 
+                        dummy_packet.servos[0].angle);
+
+            if (wifi_comms_add_packet_to_queue(&dummy_packet)) {
+                ESP_LOGI(TAG, "[DummyTask] Packet added to queue.");
+            } else {
+                ESP_LOGW(TAG, "[DummyTask] Failed to add packet. Queue full?");
+            }
+
+            vTaskDelay(pdMS_TO_TICKS(5000)); 
+        }
+    }
+
 // Application main entry point
 void setup(void) {
     ESP_LOGI(TAG, "ESP32 Servo Controller Starting");
 
-    servo_init(&servo_motor_1, 0); // Initialize servo motor to 0 degrees
+    // Initialize servo motor to 0 degrees
+    servo_init(&servo_motor_1, 0); 
+
+    // Initialize WiFi Communications
+    ESP_LOGI(TAG, "Initializing WiFi Communications...");
+    wifi_comms_init(MAIN_WIFI_SSID, MAIN_WIFI_PASSWORD, MAIN_SERVER_IP, MAIN_SERVER_PORT);
+    ESP_LOGI(TAG, "WiFi Communications Initialized.");
     
     // Create command queue for servo
     servo_cmd_queue = xQueueCreate(10, sizeof(Servo_cmd));
@@ -91,6 +84,16 @@ void setup(void) {
         4,                     // Priority (lower than servo task)
         NULL                   // Handle
     );
+
+    xTaskCreate(
+        send_dummy_data_task,  // Function
+        "dummy_data_sender",   // Name
+        4096,                  // Stack size
+        NULL,                  // Parameters
+        2,                     // Priority
+        NULL                   // Handle
+    );
+    ESP_LOGI(TAG, "Dummy data sender task created.");
     
     ESP_LOGI(TAG, "All tasks created");
 }
