@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "esp32-wrover")(type "Legacy")(uri "/Users/Gautam/Downloads/esp32-wrover-kicad-master/esp32-wrover.lib")(options "")(descr ""))
+)
