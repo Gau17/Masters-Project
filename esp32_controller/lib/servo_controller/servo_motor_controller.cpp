@@ -5,6 +5,150 @@
 #include "esp_log.h"
 #include "servo_motor_controller.h"
 
+// Servo servo_motor_gripper = {
+//     .gpio_pin = SERVO_1_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+// Servo servo_motor_wrist_roll = {
+//     .gpio_pin = SERVO_2_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+// Servo servo_motor_wrist_pitch = {
+//     .gpio_pin = SERVO_3_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+// Servo servo_motor_elbow = { //Initial angle 
+//     .gpio_pin = SERVO_4_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+// Servo servo_motor_shoulder = { //Initial angle 45 ish degrees
+//     .gpio_pin = SERVO_5_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+// Servo servo_motor_waist = { // Initial angle 100 degrees
+//     .gpio_pin = SERVO_6_GPIO,
+//     .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+//     .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+//     .max_degree = SERVO_MAX_DEGREE,
+//     .current_angle = 0,
+//     .mcpwm_unit = MCPWM_UNIT_0,
+//     .mcpwm_timer = MCPWM_TIMER_0,
+//     .mcpwm_io = MCPWM0A,
+//     .mcpwm_op = MCPWM_OPR_A
+// };
+
+Servo servo_motor_gripper = {
+    .gpio_pin = SERVO_1_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_0,
+    .mcpwm_io = MCPWM0A,        // Corresponds to Timer 0, Operator A
+    .mcpwm_op = MCPWM_OPR_A
+};
+
+Servo servo_motor_wrist_roll = {
+    .gpio_pin = SERVO_2_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_0, // Same Timer 0
+    .mcpwm_io = MCPWM0B,        // But use Operator B
+    .mcpwm_op = MCPWM_OPR_B
+};
+
+Servo servo_motor_wrist_pitch = {
+    .gpio_pin = SERVO_3_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_1, // Use Timer 1
+    .mcpwm_io = MCPWM1A,        // Operator A of Timer 1
+    .mcpwm_op = MCPWM_OPR_A
+};
+
+Servo servo_motor_elbow = { 
+    .gpio_pin = SERVO_4_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_1, // Timer 1
+    .mcpwm_io = MCPWM1B,        // Operator B of Timer 1
+    .mcpwm_op = MCPWM_OPR_B
+};
+
+Servo servo_motor_shoulder = { 
+    .gpio_pin = SERVO_5_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_2, // Timer 2
+    .mcpwm_io = MCPWM2A,        // Operator A of Timer 2
+    .mcpwm_op = MCPWM_OPR_A
+};
+
+Servo servo_motor_waist = { 
+    .gpio_pin = SERVO_6_GPIO,
+    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
+    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
+    .max_degree = SERVO_MAX_DEGREE,
+    .current_angle = 0,
+    .mcpwm_unit = MCPWM_UNIT_0,
+    .mcpwm_timer = MCPWM_TIMER_2, // Timer 2
+    .mcpwm_io = MCPWM2B,        // Operator B of Timer 2
+    .mcpwm_op = MCPWM_OPR_B
+};
+
 const char *TAG = "servo_controller";
 
 QueueHandle_t servo_cmd_queue = NULL;
@@ -90,13 +234,13 @@ void sweep_task(void *arg) {
         // Update the angle for the next iteration
         if (direction) {
             current_angle += 10;
-            if (current_angle >= 180) {
-                current_angle = 180;
+            if (current_angle >= 120) {
+                current_angle = 120;
                 direction = false;
             }
         } else {
             current_angle -= 10;
-            if (current_angle <= 0 || current_angle > 180) {
+            if (current_angle <= 0 || current_angle > 120) {
                 current_angle = 0;
                 direction = true;
             }

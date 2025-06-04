@@ -23,10 +23,15 @@
 /**
  * @brief Hardware and servo motor configuration parameters
  */
-#define SERVO_1_GPIO 18                  /**< GPIO pin connected to the servo signal wire */
+#define SERVO_1_GPIO 18                  /**< GPIO pin connected to the servo pwm wire */
+#define SERVO_2_GPIO 19                  /**< GPIO pin connected to the servo pwm wire */
+#define SERVO_3_GPIO 21                  /**< GPIO pin connected to the servo pwm wire */
+#define SERVO_4_GPIO 27                  /**< GPIO pin connected to the servo pwm wire */
+#define SERVO_5_GPIO 26                  /**< GPIO pin connected to the servo pwm wire */
+#define SERVO_6_GPIO 25                  /**< GPIO pin connected to the servo pwm wire */
 #define SERVO_MIN_PULSE_WIDTH_US 500   /**< Minimum pulse width in microseconds (servo at 0 degrees) */
 #define SERVO_MAX_PULSE_WIDTH_US 2400  /**< Maximum pulse width in microseconds (servo at 180 degrees) */
-#define SERVO_MAX_DEGREE 180           /**< Maximum angle in degrees the servo can rotate */
+#define SERVO_MAX_DEGREE 120           /**< Maximum angle in degrees the servo can rotate */
 
 /**
  * @brief FreeRTOS task parameters for the servo control tasks
@@ -55,6 +60,13 @@ struct Servo {
     mcpwm_io_signals_t mcpwm_io;    /**< MCPWM signal (MCPWM0A, MCPWM0B, etc.) */
     mcpwm_operator_t mcpwm_op;      /**< MCPWM operator (MCPWM_OPR_A, MCPWM_OPR_B) */
 };
+
+extern Servo servo_motor_gripper;
+extern Servo servo_motor_wrist_roll;
+extern Servo servo_motor_wrist_pitch;
+extern Servo servo_motor_elbow;
+extern Servo servo_motor_shoulder;
+extern Servo servo_motor_waist;
 
 /**
  * @brief Queue for sending commands to the servo control task
