@@ -30,8 +30,10 @@
 #define SERVO_5_GPIO 26                  /**< GPIO pin connected to the servo pwm wire */
 #define SERVO_6_GPIO 25                  /**< GPIO pin connected to the servo pwm wire */
 #define SERVO_MIN_PULSE_WIDTH_US 500   /**< Minimum pulse width in microseconds (servo at 0 degrees) */
-#define SERVO_MAX_PULSE_WIDTH_US 2400  /**< Maximum pulse width in microseconds (servo at 180 degrees) */
+#define SERVO_MAX_PULSE_WIDTH_US 2400  /**< Maximum pulse width in microseconds (servo at 120 degrees) */
 #define SERVO_MAX_DEGREE 120           /**< Maximum angle in degrees the servo can rotate */
+
+#define MAX_ROBOT_POSES 10
 
 /**
  * @brief FreeRTOS task parameters for the servo control tasks
@@ -61,12 +63,28 @@ struct Servo {
     mcpwm_operator_t mcpwm_op;      /**< MCPWM operator (MCPWM_OPR_A, MCPWM_OPR_B) */
 };
 
+/**
+ * @brief Structure to define a single pose of the 6-DOF robotic arm.
+ * Holds the target angle for each servo motor.
+ */
+struct RobotPose{
+    uint32_t gripper_angle;
+    uint32_t wrist_pitch_angle;
+    uint32_t wrist_roll_angle;
+    uint32_t elbow_angle;
+    uint32_t shoulder_angle;
+    uint32_t waist_angle;
+};
+
 extern Servo servo_motor_gripper;
 extern Servo servo_motor_wrist_roll;
 extern Servo servo_motor_wrist_pitch;
 extern Servo servo_motor_elbow;
 extern Servo servo_motor_shoulder;
 extern Servo servo_motor_waist;
+
+extern RobotPose saved_poses[MAX_ROBOT_POSES];
+extern int num_saved_poses;
 
 /**
  * @brief Queue for sending commands to the servo control task

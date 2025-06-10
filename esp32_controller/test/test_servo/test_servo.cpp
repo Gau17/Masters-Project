@@ -25,49 +25,58 @@ void test_servo_init() {
 void test_servo_set_angle(){
 
     servo_set_angle(&servo_motor_gripper, 0);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     TEST_ASSERT_EQUAL(0, servo_motor_gripper.current_angle);
 
-    servo_set_angle(&servo_motor_wrist_pitch, 60);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
-    TEST_ASSERT_EQUAL(60, servo_motor_wrist_pitch.current_angle);
+    servo_set_angle(&servo_motor_wrist_pitch, 0);
+    TEST_ASSERT_EQUAL(0, servo_motor_wrist_pitch.current_angle);
 
     servo_set_angle(&servo_motor_wrist_roll, 120);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     TEST_ASSERT_EQUAL(120, servo_motor_wrist_roll.current_angle);
 
     servo_set_angle(&servo_motor_elbow, 100);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     TEST_ASSERT_EQUAL(100, servo_motor_elbow.current_angle);
 
     servo_set_angle(&servo_motor_shoulder, 80);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     TEST_ASSERT_EQUAL(80, servo_motor_shoulder.current_angle);
 
     servo_set_angle(&servo_motor_waist, 70);
-    vTaskDelay(pdMS_TO_TICKS(500));
-
     TEST_ASSERT_EQUAL(70, servo_motor_waist.current_angle);
+}
 
-    //     servo_set_angle(&servo_motor_gripper, 45);
-    // vTaskDelay(pdMS_TO_TICKS(500));
+void test_apply_saved_pose() {
+    saved_poses[0].gripper_angle = 0;
+    saved_poses[0].wrist_pitch_angle = 0;
+    saved_poses[0].wrist_roll_angle = 120;
+    saved_poses[0].elbow_angle = 100;
+    saved_poses[0].shoulder_angle = 90;
+    saved_poses[0].waist_angle = 70;
 
-    // TEST_ASSERT_EQUAL(45, servo_motor_gripper.current_angle);
+    saved_poses[1].gripper_angle = 60;
+    saved_poses[1].wrist_pitch_angle = 20;
+    saved_poses[1].wrist_roll_angle = 120;
+    saved_poses[1].elbow_angle = 120;
+    saved_poses[1].shoulder_angle = 90;
+    saved_poses[1].waist_angle = 70;
 
-    // servo_set_angle(&servo_motor_gripper, 180);
-    // vTaskDelay(pdMS_TO_TICKS(500));
+    RobotPose pose_to_apply = saved_poses[0];
+        
+    servo_set_angle(&servo_motor_gripper, pose_to_apply.gripper_angle);
+    servo_set_angle(&servo_motor_wrist_pitch, pose_to_apply.wrist_pitch_angle);
+    servo_set_angle(&servo_motor_wrist_roll, pose_to_apply.wrist_roll_angle);
+    servo_set_angle(&servo_motor_elbow, pose_to_apply.elbow_angle);
+    servo_set_angle(&servo_motor_shoulder, pose_to_apply.shoulder_angle);
+    servo_set_angle(&servo_motor_waist, pose_to_apply.waist_angle);
+    vTaskDelay(pdMS_TO_TICKS(3500));
 
-    // TEST_ASSERT_EQUAL(180, servo_motor_gripper.current_angle);
+    pose_to_apply = saved_poses[1];
 
-    // servo_set_angle(&servo_motor_gripper, 240);
-    // vTaskDelay(pdMS_TO_TICKS(500));
-
-    // TEST_ASSERT_EQUAL(180, servo_motor_gripper.current_angle);
+    servo_set_angle(&servo_motor_gripper, pose_to_apply.gripper_angle);
+    servo_set_angle(&servo_motor_wrist_pitch, pose_to_apply.wrist_pitch_angle);
+    servo_set_angle(&servo_motor_wrist_roll, pose_to_apply.wrist_roll_angle);
+    servo_set_angle(&servo_motor_elbow, pose_to_apply.elbow_angle);
+    servo_set_angle(&servo_motor_shoulder, pose_to_apply.shoulder_angle);
+    servo_set_angle(&servo_motor_waist, pose_to_apply.waist_angle);
+    vTaskDelay(pdMS_TO_TICKS(1000));
 }
 
 
@@ -105,6 +114,8 @@ void setup() {
     UNITY_BEGIN();
     RUN_TEST(test_servo_init);
     RUN_TEST(test_servo_set_angle);
+    // RUN_TEST(test_set_new_pose);
+    RUN_TEST(test_apply_saved_pose);
     UNITY_END();
 }
 
