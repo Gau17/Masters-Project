@@ -66,12 +66,21 @@ void setup(void) {
         "coap_client_task",     // Name
         4096,                   // Stack size
         NULL,                   // Parameters
-        2,                      // Priority
+        3,                      // Priority
         NULL                    // Handle
     );
 
     xTaskCreate(
         coap_get_request_test,
+        "coap_get_request_test",
+        4096,
+        NULL,
+        2,
+        NULL
+    );
+
+    xTaskCreate(
+        coap_post_request_test,
         "coap_get_request_test",
         4096,
         NULL,

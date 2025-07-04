@@ -21,4 +21,10 @@ void coap_client_task(void *pvParameters);
 // FreeRTOS task to test CoAP get request
 void coap_get_request_test(void *pvParameters);
 
+// Sends a post request with binary payload
+void coap_post_request_binary(const char* endpoint, const std::vector<uint8_t>& binary_data);
+
+// FreeRTOS task to test CoAP post request
+void coap_post_request_test(void *pvParameters);
+
 #endif
