@@ -40,9 +40,9 @@ void setup(void) {
         return;
     }
 
-    // coap_client_init();
+    coap_client_init();
 
-    coap_server_init();
+    // coap_server_init();
     
     // Create servo control task
     xTaskCreate(
@@ -92,13 +92,22 @@ void setup(void) {
     // );
 
     xTaskCreate(
-        coap_server_task,       // Function
-        "coap_server_task",     // Name
-        4096,                   // Stack size
-        NULL,                   // Parameters
-        3,                      // Priority
-        NULL                    // Handle
+        coap_servo_cmd_test_task,
+        "coap_servo_cmd_test_task",
+        4096,
+        NULL,
+        1,
+        NULL
     );
+
+    // xTaskCreate(
+    //     coap_server_task,       // Function
+    //     "coap_server_task",     // Name
+    //     4096,                   // Stack size
+    //     NULL,                   // Parameters
+    //     3,                      // Priority
+    //     NULL                    // Handle
+    // );
 
     //     xTaskCreate(
     //     coap_basic_notify_task,       // Function
