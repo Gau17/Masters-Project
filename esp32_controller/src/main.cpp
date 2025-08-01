@@ -6,6 +6,7 @@
 #include "servo_motor_controller.h"
 #include "wifi_comms.h"
 #include "coap_client.h"
+#include "coap_server.h"
 
 Servo servo_motor_1 = {
     .gpio_pin = SERVO_1_GPIO,
@@ -39,7 +40,9 @@ void setup(void) {
         return;
     }
 
-    coap_client_init();
+    // coap_client_init();
+
+    coap_server_init();
     
     // Create servo control task
     xTaskCreate(
@@ -61,32 +64,50 @@ void setup(void) {
         NULL                   // Handle
     );
 
+    // xTaskCreate(
+    //     coap_client_task,       // Function
+    //     "coap_client_task",     // Name
+    //     4096,                   // Stack size
+    //     NULL,                   // Parameters
+    //     3,                      // Priority
+    //     NULL                    // Handle
+    // );
+
+    // xTaskCreate(
+    //     coap_get_request_test,
+    //     "coap_get_request_test",
+    //     4096,
+    //     NULL,
+    //     2,
+    //     NULL
+    // );
+
+    // xTaskCreate(
+    //     coap_post_request_test,
+    //     "coap_post_request_test",
+    //     4096,
+    //     NULL,
+    //     1,
+    //     NULL
+    // );
+
     xTaskCreate(
-        coap_client_task,       // Function
-        "coap_client_task",     // Name
+        coap_server_task,       // Function
+        "coap_server_task",     // Name
         4096,                   // Stack size
         NULL,                   // Parameters
         3,                      // Priority
         NULL                    // Handle
     );
 
-    xTaskCreate(
-        coap_get_request_test,
-        "coap_get_request_test",
-        4096,
-        NULL,
-        2,
-        NULL
-    );
-
-    xTaskCreate(
-        coap_post_request_test,
-        "coap_get_request_test",
-        4096,
-        NULL,
-        1,
-        NULL
-    );
+    //     xTaskCreate(
+    //     coap_basic_notify_task,       // Function
+    //     "coap_server_notify_task",     // Name
+    //     4096,                   // Stack size
+    //     NULL,                   // Parameters
+    //     2,                      // Priority
+    //     NULL                    // Handle
+    // );
     
     ESP_LOGI(TAG, "All tasks created");
 }
