@@ -1,3 +1,4 @@
+// Working code with freertos and mcpwm
 #include <stdio.h>
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -7,18 +8,6 @@
 #include "wifi_comms.h"
 #include "coap_client.h"
 #include "coap_server.h"
-
-Servo servo_motor_1 = {
-    .gpio_pin = SERVO_1_GPIO,
-    .min_pulse_width_us = SERVO_MIN_PULSE_WIDTH_US,
-    .max_pulse_width_us = SERVO_MAX_PULSE_WIDTH_US,
-    .max_degree = SERVO_MAX_DEGREE,
-    .current_angle = 0,
-    .mcpwm_unit = MCPWM_UNIT_0,
-    .mcpwm_timer = MCPWM_TIMER_0,
-    .mcpwm_io = MCPWM0A,
-    .mcpwm_op = MCPWM_OPR_A
-};
 
 // Application main entry point
 void setup(void) {
@@ -32,6 +21,13 @@ void setup(void) {
     ESP_LOGI(TAG, "Initializing WiFi Communications...");
     wifi_comms_init(MAIN_WIFI_SSID, MAIN_WIFI_PASSWORD);
     ESP_LOGI(TAG, "WiFi Communications Initialized.");
+
+    servo_init(&servo_motor_gripper, 110); 
+    servo_init(&servo_motor_wrist_roll, 120); 
+    servo_init(&servo_motor_wrist_pitch, 60); 
+    servo_init(&servo_motor_elbow, 0); 
+    servo_init(&servo_motor_shoulder, 0); 
+    servo_init(&servo_motor_waist, 0);
     
     // Create command queue for servo
     servo_cmd_queue = xQueueCreate(10, sizeof(Servo_cmd));
@@ -55,11 +51,60 @@ void setup(void) {
     );
     
     // Create sweep task
+    // xTaskCreate(
+    //     sweep_task,            // Function
+    //     "sweep_task",          // Name
+    //     4096,                  // Stack size
+    //     &servo_motor_gripper,  // Parameters
+    //     4,                     // Priority (lower than servo task)
+    //     NULL                   // Handle
+    // );
+
+    //     // Create sweep task
+    // xTaskCreate(
+    //     sweep_task,            // Function
+    //     "sweep_task",          // Name
+    //     4096,                  // Stack size
+    //     &servo_motor_wrist_pitch,  // Parameters
+    //     4,                     // Priority (lower than servo task)
+    //     NULL                   // Handle
+    // );
+
+    //     // Create sweep task
+    // xTaskCreate(
+    //     sweep_task,            // Function
+    //     "sweep_task",          // Name
+    //     4096,                  // Stack size
+    //     &servo_motor_wrist_roll,  // Parameters
+    //     4,                     // Priority (lower than servo task)
+    //     NULL                   // Handle
+    // );
+
     xTaskCreate(
         sweep_task,            // Function
         "sweep_task",          // Name
         4096,                  // Stack size
-        &servo_motor_1,        // Parameters
+        &servo_motor_elbow,  // Parameters
+        4,                     // Priority (lower than servo task)
+        NULL                   // Handle
+    );
+
+        // Create sweep task
+    xTaskCreate(
+        sweep_task,            // Function
+        "sweep_task",          // Name
+        4096,                  // Stack size
+        &servo_motor_shoulder,  // Parameters
+        4,                     // Priority (lower than servo task)
+        NULL                   // Handle
+    );
+
+        // Create sweep task
+    xTaskCreate(
+        sweep_task,            // Function
+        "sweep_task",          // Name
+        4096,                  // Stack size
+        &servo_motor_waist,  // Parameters
         4,                     // Priority (lower than servo task)
         NULL                   // Handle
     );
