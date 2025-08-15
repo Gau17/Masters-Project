@@ -1,0 +1,232 @@
+[RTT] Round-Trip Time: 601019 us (601.02 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 836175 us (836.17 ms)
+[POSE-POLL] waist=0 shoulder=0 elbow=0 wrist_pitch=0 wrist_roll=0 gripper=0
+[RTT] Round-Trip Time: 574034 us (574.03 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 796718 us (796.72 ms)
+[POSE-POLL] waist=30 shoulder=30 elbow=18 wrist_pitch=1 wrist_roll=19 gripper=18
+[RTT] Round-Trip Time: 536877 us (536.88 ms)
+[TIMING] CoAP RX->Decode: 382 us
+[TIMING] Network Delay: 740107 us (740.11 ms)
+[POSE-POLL] waist=26 shoulder=6 elbow=18 wrist_pitch=9 wrist_roll=33 gripper=28
+[RTT] Round-Trip Time: 600015 us (600.01 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 829457 us (829.46 ms)
+[POSE-POLL] waist=15 shoulder=35 elbow=2 wrist_pitch=20 wrist_roll=16 gripper=9
+[RTT] Round-Trip Time: 663532 us (663.53 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 931457 us (931.46 ms)
+[POSE-POLL] waist=28 shoulder=33 elbow=3 wrist_pitch=11 wrist_roll=40 gripper=13
+[RTT] Round-Trip Time: 627149 us (627.15 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 876325 us (876.33 ms)
+[POSE-POLL] waist=21 shoulder=8 elbow=29 wrist_pitch=33 wrist_roll=22 gripper=40
+[RTT] Round-Trip Time: 589274 us (589.27 ms)
+[TIMING] CoAP RX->Decode: 209 us
+[TIMING] Network Delay: 817957 us (817.96 ms)
+[POSE-POLL] waist=17 shoulder=25 elbow=26 wrist_pitch=38 wrist_roll=34 gripper=34
+[RTT] Round-Trip Time: 561903 us (561.90 ms)
+[TIMING] CoAP RX->Decode: 375 us
+[TIMING] Network Delay: 778209 us (778.21 ms)
+[POSE-POLL] waist=39 shoulder=17 elbow=5 wrist_pitch=9 wrist_roll=2 gripper=5
+[RTT] Round-Trip Time: 624986 us (624.99 ms)
+[TIMING] CoAP RX->Decode: 379 us
+[TIMING] Network Delay: 872951 us (872.95 ms)
+[POSE-POLL] waist=15 shoulder=40 elbow=38 wrist_pitch=25 wrist_roll=33 gripper=25
+[RTT] Round-Trip Time: 587023 us (587.02 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 816473 us (816.47 ms)
+[POSE-POLL] waist=20 shoulder=22 elbow=30 wrist_pitch=3 wrist_roll=15 gripper=9
+[RTT] Round-Trip Time: 550032 us (550.03 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 761659 us (761.66 ms)
+[POSE-POLL] waist=37 shoulder=34 elbow=22 wrist_pitch=26 wrist_roll=3 gripper=36
+[RTT] Round-Trip Time: 624007 us (624.01 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 871514 us (871.51 ms)
+[POSE-POLL] waist=7 shoulder=10 elbow=12 wrist_pitch=24 wrist_roll=20 gripper=17
+[RTT] Round-Trip Time: 587010 us (587.01 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 817165 us (817.16 ms)
+[POSE-POLL] waist=37 shoulder=9 elbow=37 wrist_pitch=20 wrist_roll=36 gripper=10
+[RTT] Round-Trip Time: 550179 us (550.18 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 761335 us (761.34 ms)
+[POSE-POLL] waist=12 shoulder=6 elbow=12 wrist_pitch=0 wrist_roll=34 gripper=29
+[RTT] Round-Trip Time: 622889 us (622.89 ms)
+[TIMING] CoAP RX->Decode: 552 us
+[TIMING] Network Delay: 870509 us (870.51 ms)
+[POSE-POLL] waist=11 shoulder=12 elbow=22 wrist_pitch=15 wrist_roll=2 gripper=1
+[RTT] Round-Trip Time: 585907 us (585.91 ms)
+[TIMING] CoAP RX->Decode: 380 us
+[TIMING] Network Delay: 816192 us (816.19 ms)
+[POSE-POLL] waist=35 shoulder=6 elbow=13 wrist_pitch=19 wrist_roll=33 gripper=20
+[RTT] Round-Trip Time: 550032 us (550.03 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 761416 us (761.42 ms)
+[POSE-POLL] waist=25 shoulder=15 elbow=27 wrist_pitch=31 wrist_roll=16 gripper=33
+[RTT] Round-Trip Time: 613019 us (613.02 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 855197 us (855.20 ms)
+[POSE-POLL] waist=18 shoulder=22 elbow=19 wrist_pitch=1 wrist_roll=33 gripper=31
+[RTT] Round-Trip Time: 576234 us (576.23 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 799518 us (799.52 ms)
+[POSE-POLL] waist=13 shoulder=12 elbow=40 wrist_pitch=20 wrist_roll=31 gripper=4
+[RTT] Round-Trip Time: 540265 us (540.26 ms)
+[TIMING] CoAP RX->Decode: 225 us
+[TIMING] Network Delay: 746453 us (746.45 ms)
+[POSE-POLL] waist=15 shoulder=28 elbow=1 wrist_pitch=6 wrist_roll=4 gripper=12
+[RTT] Round-Trip Time: 612990 us (612.99 ms)
+[TIMING] CoAP RX->Decode: 378 us
+[TIMING] Network Delay: 856630 us (856.63 ms)
+[POSE-POLL] waist=30 shoulder=33 elbow=29 wrist_pitch=16 wrist_roll=8 gripper=20
+[RTT] Round-Trip Time: 576995 us (577.00 ms)
+[TIMING] CoAP RX->Decode: 380 us
+[TIMING] Network Delay: 803394 us (803.39 ms)
+[POSE-POLL] waist=23 shoulder=39 elbow=23 wrist_pitch=36 wrist_roll=25 gripper=19
+[RTT] Round-Trip Time: 542019 us (542.02 ms)
+[TIMING] CoAP RX->Decode: 373 us
+[TIMING] Network Delay: 749307 us (749.31 ms)
+[POSE-POLL] waist=39 shoulder=12 elbow=18 wrist_pitch=36 wrist_roll=20 gripper=31
+[RTT] Round-Trip Time: 615018 us (615.02 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 859198 us (859.20 ms)
+[POSE-POLL] waist=3 shoulder=1 elbow=27 wrist_pitch=32 wrist_roll=6 gripper=30
+[RTT] Round-Trip Time: 578064 us (578.06 ms)
+[TIMING] CoAP RX->Decode: 375 us
+[TIMING] Network Delay: 803172 us (803.17 ms)
+[POSE-POLL] waist=16 shoulder=2 elbow=14 wrist_pitch=12 wrist_roll=5 gripper=15
+[RTT] Round-Trip Time: 541020 us (541.02 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 748336 us (748.34 ms)
+[POSE-POLL] waist=38 shoulder=4 elbow=36 wrist_pitch=30 wrist_roll=0 gripper=29
+[RTT] Round-Trip Time: 613907 us (613.91 ms)
+[TIMING] CoAP RX->Decode: 380 us
+[TIMING] Network Delay: 856477 us (856.48 ms)
+[POSE-POLL] waist=8 shoulder=8 elbow=20 wrist_pitch=2 wrist_roll=34 gripper=10
+[RTT] Round-Trip Time: 567030 us (567.03 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 787609 us (787.61 ms)
+[POSE-POLL] waist=15 shoulder=7 elbow=16 wrist_pitch=37 wrist_roll=23 gripper=25
+[RTT] Round-Trip Time: 539894 us (539.89 ms)
+[TIMING] CoAP RX->Decode: 374 us
+[TIMING] Network Delay: 746938 us (746.94 ms)
+[POSE-POLL] waist=26 shoulder=14 elbow=33 wrist_pitch=17 wrist_roll=35 gripper=6
+[RTT] Round-Trip Time: 602994 us (602.99 ms)
+[TIMING] CoAP RX->Decode: 378 us
+[TIMING] Network Delay: 840946 us (840.95 ms)
+[POSE-POLL] waist=3 shoulder=35 elbow=26 wrist_pitch=37 wrist_roll=1 gripper=14
+[RTT] Round-Trip Time: 566025 us (566.02 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 784001 us (784.00 ms)
+[POSE-POLL] waist=30 shoulder=17 elbow=26 wrist_pitch=39 wrist_roll=31 gripper=17
+[RTT] Round-Trip Time: 530022 us (530.02 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 732050 us (732.05 ms)
+[POSE-POLL] waist=14 shoulder=17 elbow=38 wrist_pitch=22 wrist_roll=35 gripper=25
+[RTT] Round-Trip Time: 602918 us (602.92 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 839128 us (839.13 ms)
+[POSE-POLL] waist=11 shoulder=35 elbow=38 wrist_pitch=8 wrist_roll=24 gripper=5
+[RTT] Round-Trip Time: 566027 us (566.03 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 785704 us (785.70 ms)
+[POSE-POLL] waist=25 shoulder=18 elbow=16 wrist_pitch=23 wrist_roll=6 gripper=23
+[RTT] Round-Trip Time: 629286 us (629.29 ms)
+[TIMING] CoAP RX->Decode: 375 us
+[TIMING] Network Delay: 878421 us (878.42 ms)
+[POSE-POLL] waist=13 shoulder=16 elbow=40 wrist_pitch=10 wrist_roll=10 gripper=9
+[RTT] Round-Trip Time: 592023 us (592.02 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 823783 us (823.78 ms)
+[POSE-POLL] waist=39 shoulder=24 elbow=38 wrist_pitch=1 wrist_roll=32 gripper=34
+[RTT] Round-Trip Time: 555157 us (555.16 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 772537 us (772.54 ms)
+[POSE-POLL] waist=30 shoulder=11 elbow=22 wrist_pitch=3 wrist_roll=12 gripper=30
+[RTT] Round-Trip Time: 628003 us (628.00 ms)
+[TIMING] CoAP RX->Decode: 378 us
+[TIMING] Network Delay: 876869 us (876.87 ms)
+[POSE-POLL] waist=15 shoulder=8 elbow=20 wrist_pitch=36 wrist_roll=4 gripper=27
+[RTT] Round-Trip Time: 589005 us (589.00 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 820470 us (820.47 ms)
+[POSE-POLL] waist=25 shoulder=2 elbow=40 wrist_pitch=2 wrist_roll=30 gripper=4
+[RTT] Round-Trip Time: 552019 us (552.02 ms)
+[TIMING] CoAP RX->Decode: 377 us
+[TIMING] Network Delay: 764971 us (764.97 ms)
+[POSE-POLL] waist=16 shoulder=10 elbow=39 wrist_pitch=6 wrist_roll=38 gripper=30
+[RTT] Round-Trip Time: 625021 us (625.02 ms)
+[TIMING] CoAP RX->Decode: 368 us
+[TIMING] Network Delay: 873773 us (873.77 ms)
+[POSE-POLL] waist=40 shoulder=6 elbow=16 wrist_pitch=38 wrist_roll=24 gripper=33
+[RTT] Round-Trip Time: 587872 us (587.87 ms)
+[TIMING] CoAP RX->Decode: 381 us
+[TIMING] Network Delay: 819117 us (819.12 ms)
+[POSE-POLL] waist=38 shoulder=6 elbow=0 wrist_pitch=8 wrist_roll=9 gripper=32
+[RTT] Round-Trip Time: 551030 us (551.03 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 762787 us (762.79 ms)
+[POSE-POLL] waist=12 shoulder=15 elbow=13 wrist_pitch=40 wrist_roll=25 gripper=24
+[RTT] Round-Trip Time: 614293 us (614.29 ms)
+[TIMING] CoAP RX->Decode: 381 us
+[TIMING] Network Delay: 858230 us (858.23 ms)
+[POSE-POLL] waist=40 shoulder=31 elbow=34 wrist_pitch=13 wrist_roll=36 gripper=28
+[RTT] Round-Trip Time: 578032 us (578.03 ms)
+[TIMING] CoAP RX->Decode: 373 us
+[TIMING] Network Delay: 803796 us (803.80 ms)
+[POSE-POLL] waist=35 shoulder=0 elbow=29 wrist_pitch=37 wrist_roll=5 gripper=33
+[RTT] Round-Trip Time: 541145 us (541.14 ms)
+[TIMING] CoAP RX->Decode: 379 us
+[TIMING] Network Delay: 748883 us (748.88 ms)
+[POSE-POLL] waist=9 shoulder=0 elbow=23 wrist_pitch=32 wrist_roll=9 gripper=15
+[RTT] Round-Trip Time: 613987 us (613.99 ms)
+[TIMING] CoAP RX->Decode: 374 us
+[TIMING] Network Delay: 858298 us (858.30 ms)
+[POSE-POLL] waist=12 shoulder=21 elbow=12 wrist_pitch=17 wrist_roll=9 gripper=38
+[RTT] Round-Trip Time: 576987 us (576.99 ms)
+[TIMING] CoAP RX->Decode: 379 us
+[TIMING] Network Delay: 808165 us (808.16 ms)
+[POSE-POLL] waist=29 shoulder=36 elbow=30 wrist_pitch=26 wrist_roll=37 gripper=6
+[RTT] Round-Trip Time: 542023 us (542.02 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 749474 us (749.47 ms)
+[POSE-POLL] waist=27 shoulder=23 elbow=24 wrist_pitch=10 wrist_roll=16 gripper=36
+[RTT] Round-Trip Time: 614886 us (614.89 ms)
+[TIMING] CoAP RX->Decode: 378 us
+[TIMING] Network Delay: 855907 us (855.91 ms)
+[POSE-POLL] waist=9 shoulder=31 elbow=1 wrist_pitch=31 wrist_roll=37 gripper=5
+[RTT] Round-Trip Time: 578029 us (578.03 ms)
+[TIMING] CoAP RX->Decode: 373 us
+[TIMING] Network Delay: 804053 us (804.05 ms)
+[POSE-POLL] waist=30 shoulder=33 elbow=30 wrist_pitch=25 wrist_roll=8 gripper=15
+[RTT] Round-Trip Time: 541009 us (541.01 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 748477 us (748.48 ms)
+[POSE-POLL] waist=38 shoulder=38 elbow=38 wrist_pitch=16 wrist_roll=18 gripper=2
+[RTT] Round-Trip Time: 605027 us (605.03 ms)
+[TIMING] CoAP RX->Decode: 372 us
+[TIMING] Network Delay: 844853 us (844.85 ms)
+[POSE-POLL] waist=17 shoulder=40 elbow=12 wrist_pitch=24 wrist_roll=1 gripper=11
+[RTT] Round-Trip Time: 568022 us (568.02 ms)
+[TIMING] CoAP RX->Decode: 375 us
+[TIMING] Network Delay: 789237 us (789.24 ms)
+[POSE-POLL] waist=6 shoulder=10 elbow=19 wrist_pitch=23 wrist_roll=15 gripper=8
+[RTT] Round-Trip Time: 540907 us (540.91 ms)
+[TIMING] CoAP RX->Decode: 380 us
+[TIMING] Network Delay: 749003 us (749.00 ms)
+[POSE-POLL] waist=4 shoulder=23 elbow=17 wrist_pitch=14 wrist_roll=36 gripper=3
+[RTT] Round-Trip Time: 603990 us (603.99 ms)
+[TIMING] CoAP RX->Decode: 382 us
+[TIMING] Network Delay: 841945 us (841.95 ms)
+[POSE-POLL] waist=21 shoulder=19 elbow=0 wrist_pitch=34 wrist_roll=20 gripper=8
+[RTT] Round-Trip Time: 567028 us (567.03 ms)
+[TIMING] CoAP RX->Decode: 373 us
+[TIMING] Network Delay: 787626 us (787.63 ms)
+[POSE-POLL] waist=34 shoulder=8 elbow=26 wrist_pitch=35 wrist_roll=21 gripper=26
+[RTT] Round-Trip Time: 530027 us (530.03 ms)
+[TIMING] CoAP RX->Decode: 376 us
+[TIMING] Network Delay: 732180 us (732.18 ms)
+[POSE-POLL] waist=34 shoulder=27 elbow=5 wrist_pitch=20 wrist_roll=28 gripper=3

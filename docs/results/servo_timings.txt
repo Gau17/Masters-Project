@@ -1,0 +1,42 @@
+[POSE-POLL] waist=12 shoulder=14 elbow=7 wrist_pitch=3 wrist_roll=11 gripper=13
+I (229228) servo_controller: [TIMING] Queueing servo 25: RX->Queue = 6541 us
+
+I (229235) servo_controller: [TIMING] Servo 25 execution start: RX->Exec = 13503 us
+
+I (229235) servo_controller: [TIMING] Queueing servo 26: RX->Queue = 13688 us
+
+I (229243) servo_controller: Setting servo 25 to angle: 12 degrees (pulse width: 690 us)
+I (229251) servo_controller: [TIMING] Queueing servo 27: RX->Queue = 28961 us
+
+I (229257) servo_controller: [TIMING] Servo 25 TOTAL DELAY: RX->Complete = 35875 us (35.88 ms)
+
+I (229265) servo_controller: [TIMING] Queueing servo 21: RX->Queue = 43690 us
+
+I (229280) servo_controller: [TIMING] Queueing servo 19: RX->Queue = 58428 us
+
+I (229287) servo_controller: [TIMING] Queueing servo 18: RX->Queue = 65459 us
+
+I (229323) servo_controller: [TIMING] Servo 26 execution start: RX->Exec = 100968 us
+
+I (229323) servo_controller: Setting servo 26 to angle: 14 degrees (pulse width: 721 us)
+I (229327) servo_controller: [TIMING] Servo 26 TOTAL DELAY: RX->Complete = 105697 us (105.70 ms)
+
+I (229386) servo_controller: [TIMING] Servo 27 execution start: RX->Exec = 163952 us
+
+I (229386) servo_controller: Setting servo 27 to angle: 7 degrees (pulse width: 610 us)
+I (229390) servo_controller: [TIMING] Servo 27 TOTAL DELAY: RX->Complete = 168347 us (168.35 ms)
+
+I (229449) servo_controller: [TIMING] Servo 21 execution start: RX->Exec = 227143 us
+
+I (229449) servo_controller: Setting servo 21 to angle: 3 degrees (pulse width: 547 us)
+I (229453) servo_controller: [TIMING] Servo 21 TOTAL DELAY: RX->Complete = 231737 us (231.74 ms)
+
+I (229512) servo_controller: [TIMING] Servo 19 execution start: RX->Exec = 289952 us
+
+I (229512) servo_controller: Setting servo 19 to angle: 11 degrees (pulse width: 674 us)
+I (229516) servo_controller: [TIMING] Servo 19 TOTAL DELAY: RX->Complete = 294335 us (294.33 ms)
+
+I (229575) servo_controller: [TIMING] Servo 18 execution start: RX->Exec = 352968 us
+
+I (229575) servo_controller: Setting servo 18 to angle: 13 degrees (pulse width: 705 us)
+I (229579) servo_controller: [TIMING] Servo 18 TOTAL DELAY: RX->Complete = 357632 us (357.63 ms)
