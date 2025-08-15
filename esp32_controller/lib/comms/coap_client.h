@@ -32,4 +32,10 @@ void coap_send_servo_cmd_cbor(const char* endpoint, const Servo_cmd& cmd);
 
 void coap_servo_cmd_test_task(void *pvParameters);
 
+void coap_start_pose_observe();
+
+void coap_pose_poll_task(void *pv);
+
+void sync_time_with_ntp();
+
 #endif

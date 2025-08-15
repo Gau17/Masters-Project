@@ -4,6 +4,8 @@
 #include <stdint.h>
 #include "esp_log.h"
 #include "servo_motor_controller.h"
+#include "esp_timer.h"
+#include <sys/time.h>
 
 RobotPose saved_poses[MAX_ROBOT_POSES];
 int num_saved_poses = 0;
@@ -84,6 +86,8 @@ const char *TAG = "servo_controller";
 
 QueueHandle_t servo_cmd_queue = NULL;
 
+QueueHandle_t servo_cmd_timed_queue = NULL;
+
 // Helper function to convert angle to pulse width
 static uint32_t servo_per_degree_init(Servo* servo, uint32_t degree) {
     return (((servo->max_pulse_width_us - servo->min_pulse_width_us) * degree) / 
@@ -140,6 +144,29 @@ void servo_control_task(void *arg) {
     }
 }
 
+void servo_control_task_timed(void *arg) {
+    Servo_cmd_timed cmd;
+    
+    ESP_LOGI(TAG, "Timed servo control task started");
+    
+    while (1) {
+        if (xQueueReceive(servo_cmd_timed_queue, &cmd, portMAX_DELAY) == pdTRUE) {
+            int64_t exec_start = esp_timer_get_time();
+            ESP_LOGI(TAG, "[TIMING] Servo %d execution start: RX->Exec = %lld us\n", 
+                          cmd.servo->gpio_pin, exec_start - cmd.rx_timestamp);
+            
+            servo_set_angle(cmd.servo, cmd.angle);
+            
+            int64_t exec_end = esp_timer_get_time();
+            ESP_LOGI(TAG, "[TIMING] Servo %d TOTAL DELAY: RX->Complete = %lld us (%.2f ms)\n", 
+                          cmd.servo->gpio_pin, exec_end - cmd.rx_timestamp, 
+                          (exec_end - cmd.rx_timestamp) / 1000.0);
+            
+            vTaskDelay(cmd.delay_ms / portTICK_PERIOD_MS);
+        }
+    }
+}
+
 // Sweep generation task for testing
 void sweep_task(void *arg) {
     Servo* servo_to_sweep = (Servo*)arg;
@@ -179,4 +206,44 @@ void sweep_task(void *arg) {
         
         vTaskDelay(150 / portTICK_PERIOD_MS);
     }
+}
+
+void enqueue_servo_move(Servo* servo, uint32_t angle, uint32_t delay_ms){
+    if(!servo) return;
+    Servo_cmd cmd{angle, delay_ms, servo};
+    if (xQueueSend(servo_cmd_queue, &cmd, 0) != pdTRUE) {
+        ESP_LOGW(TAG, "Failed to send command to servo queue");
+    }
+}
+
+void apply_robot_pose(const RobotPose& pose){
+    // Sequence – adjust delay_ms as needed
+    // enqueue_servo_move(&servo_motor_waist,     pose.waist_angle,     50);
+    // enqueue_servo_move(&servo_motor_shoulder,  pose.shoulder_angle,  50);
+    // enqueue_servo_move(&servo_motor_elbow,     pose.elbow_angle,     50);
+    // enqueue_servo_move(&servo_motor_wrist_pitch, pose.wrist_pitch_angle, 50);
+    enqueue_servo_move(&servo_motor_wrist_roll,  pose.wrist_roll_angle, 50);
+    enqueue_servo_move(&servo_motor_gripper,   pose.gripper_angle,   50);
+}
+
+void enqueue_servo_move_timed(Servo* servo, uint32_t angle, uint32_t delay_ms, int64_t rx_time){
+    if(!servo) return;
+    Servo_cmd_timed cmd{angle, delay_ms, servo, rx_time};
+    int64_t queue_time = esp_timer_get_time();
+    ESP_LOGI(TAG,"[TIMING] Queueing servo %d: RX->Queue = %lld us\n", 
+                  servo->gpio_pin, queue_time - rx_time);
+    
+    if (xQueueSend(servo_cmd_timed_queue, &cmd, 0) != pdTRUE) {
+        ESP_LOGW(TAG, "Failed to send timed command to servo queue");
+    }
+}
+
+void apply_robot_pose_with_timing(const RobotPose& pose, int64_t rx_time){
+    enqueue_servo_move_timed(&servo_motor_waist,       pose.waist_angle,       50, rx_time);
+    enqueue_servo_move_timed(&servo_motor_shoulder,    pose.shoulder_angle,    50, rx_time);
+    enqueue_servo_move_timed(&servo_motor_elbow,       pose.elbow_angle,       50, rx_time);
+    enqueue_servo_move_timed(&servo_motor_wrist_pitch, pose.wrist_pitch_angle, 50, rx_time);
+    enqueue_servo_move_timed(&servo_motor_wrist_roll,  pose.wrist_roll_angle, 50, rx_time);
+    enqueue_servo_move_timed(&servo_motor_gripper,     pose.gripper_angle,    50, rx_time);
+    
 }

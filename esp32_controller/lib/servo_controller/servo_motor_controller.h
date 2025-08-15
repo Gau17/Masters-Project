@@ -94,6 +94,8 @@ extern int num_saved_poses;
  */
 extern QueueHandle_t servo_cmd_queue;
 
+extern QueueHandle_t servo_cmd_timed_queue;
+
 /**
  * @brief Command structure for servo motor control
  * 
@@ -104,6 +106,14 @@ struct Servo_cmd{
     uint32_t delay_ms; /**< Delay after reaching position, in milliseconds */
     Servo* servo;    /**< Pointer to the servo to control */
 };
+
+// Add timing info to servo command
+typedef struct {
+    uint32_t angle;
+    uint32_t delay_ms;
+    Servo* servo;
+    int64_t rx_timestamp;      // ESP32 RX time
+} Servo_cmd_timed;
 
 /**
  * @brief Initialize a servo motor
@@ -136,8 +146,19 @@ void servo_set_angle(Servo* servo, uint32_t angle);
  */
 void servo_control_task(void *arg);
 
+void servo_control_task_timed(void *arg);
+
 //For basic testing
 void sweep_task(void *arg);
+
+void enqueue_servo_move(Servo* servo, uint32_t angle, uint32_t delay_ms);
+
+void apply_robot_pose(const RobotPose& pose);
+
+void enqueue_servo_move_timed(Servo* servo, uint32_t angle, uint32_t delay_ms, int64_t rx_time);
+
+void apply_robot_pose_with_timing(const RobotPose& pose, int64_t rx_time);
+
 
 // #ifdef __cplusplus
 // }
